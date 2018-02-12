@@ -22,3 +22,7 @@ spec:
         - /main
         - --amount=200
         - --log_lines=50
+        resources:
+          requests:
+            memory: 50Mi
+            cpu: 5m
