@@ -1,0 +1,28 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: log-generator
+  labels:
+    app: log-generator
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: log-generator
+  template:
+    metadata:
+      name: log-generator
+      labels:
+        app: log-generator
+    spec:
+      containers:
+      - name: log-generator
+        image: gcr.io/loburm-kubernetes-images/log-generator:0.1
+        command:
+        - /main
+        - --amount=1000
+        - --log_lines=9
+        resources:
+          requests:
+            memory: 50Mi
+            cpu: 5m
